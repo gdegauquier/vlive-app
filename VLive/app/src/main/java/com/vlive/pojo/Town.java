@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Town {
 
-    private Town(String name) {
+    public Town(String name) {
 
         this.name = name;
 
