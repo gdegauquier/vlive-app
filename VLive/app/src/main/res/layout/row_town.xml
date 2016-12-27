@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:id="@+id/ll_fond">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/presence_online"
+        android:id="@+id/imageTown"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:contentDescription="town"/>
+
+    <TextView android:text="LILLE" android:id="@+id/townName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+    </TextView>
+
+
+</LinearLayout>
