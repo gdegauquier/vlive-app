@@ -6,10 +6,14 @@ import android.widget.ListView;
 
 import com.vlive.adapter.TownAdapter;
 import com.vlive.pojo.Town;
+import com.vlive.service.TownService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ActivityMain extends Activity {
+
+    public List<Town> listT = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,8 @@ public class ActivityMain extends Activity {
         setContentView(R.layout.activity_main);
 
         //Récupération de la liste des personnes
-        ArrayList<Town> listT = Town.get();
+        TownService townService = new TownService(this);
+        townService.execute();
 
         //Création et initialisation de l'Adapter pour les personnes
         TownAdapter adapter = new TownAdapter(this, listT);
@@ -41,6 +46,7 @@ public class ActivityMain extends Activity {
         list.setAdapter(adapter);
 
     }
+
 }
 
 // http://www.vogella.com/tutorials/Retrofit/article.html#exercise-using-retrofit-to-query-stackoverflow-in-android
