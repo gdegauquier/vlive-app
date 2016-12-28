@@ -8,12 +8,6 @@ import java.util.ArrayList;
 
 public class Town {
 
-    public Town(String name) {
-
-        this.name = name;
-
-    }
-
     private String name;
 
     public String getName() {
@@ -30,7 +24,7 @@ public class Town {
      *
      * @return une liste de "Personne"
      */
-    public static ArrayList<Town> get() {
+    /*public static ArrayList<Town> get() {
         ArrayList<Town> listTowns = new ArrayList<Town>();
 
         listTowns.add(new Town("CROIX"));
@@ -51,5 +45,5 @@ public class Town {
         listTowns.add(new Town("WATTRELOS"));
 
         return listTowns;
-    }
+    }*/
 }
