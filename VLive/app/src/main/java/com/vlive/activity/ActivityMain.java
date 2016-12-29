@@ -21,4 +21,5 @@ public class ActivityMain extends Activity {
 
 }
 
+//http://blog.grafixartist.com/create-gmail-style-list-in-android/
 // http://www.vogella.com/tutorials/Retrofit/article.html#exercise-using-retrofit-to-query-stackoverflow-in-android
