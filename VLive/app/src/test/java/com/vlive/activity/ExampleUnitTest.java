@@ -1,4 +1,4 @@
-package com.vlive.app;
+package com.vlive.activity;
 
 import org.junit.Test;
 

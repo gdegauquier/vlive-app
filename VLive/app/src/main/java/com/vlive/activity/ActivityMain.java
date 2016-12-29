@@ -1,9 +1,9 @@
-package com.vlive.app;
+package com.vlive.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.vlive.service.StationService;
+import com.vlive.asynctask.StationAsyncTask;
 
 
 public class ActivityMain extends Activity {
@@ -14,8 +14,8 @@ public class ActivityMain extends Activity {
         setContentView(R.layout.activity_main);
 
         //Récupération de la liste des stations
-        StationService stationService = new StationService(  this  );
-        stationService.execute();
+        StationAsyncTask stationAsyncTask = new StationAsyncTask(  this  );
+        stationAsyncTask.execute();
 
     }
 

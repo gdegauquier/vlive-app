@@ -19,10 +19,10 @@ import java.util.List;
  * Created by Georges on 26/12/2016.
  */
 
-public class StationAdapter extends BaseAdapter{
+public class TownAdapter extends BaseAdapter{
 
-    // Une liste de personnes
-    private List<Station> mListS;
+    // Une liste de villes
+    private List<String> mListT;
 
     //Le contexte dans lequel est présent notre adapter
     private Context mContext;
@@ -30,20 +30,20 @@ public class StationAdapter extends BaseAdapter{
     //Un mécanisme pour gérer l'affichage graphique depuis un layout XML
     private LayoutInflater mInflater;
 
-    public StationAdapter(Context context, List<Station> listS) {
+    public TownAdapter(Context context, List<String> listT) {
         mContext = context;
-        mListS = listS;
+        mListT = listT;
         mInflater = LayoutInflater.from(mContext);
     }
 
     @Override
     public int getCount() {
-        return mListS.size();
+        return mListT.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return mListS.get(i);
+        return mListT.get(i);
     }
 
     @Override
@@ -68,19 +68,10 @@ public class StationAdapter extends BaseAdapter{
 
         //(3) : Renseignement des valeurs
 
-        String townName = null == mListS.get(i).getTown() ? "?" : mListS.get(i).getTown().getName() ;
-
-        station.setText(mListS.get(i).getId() + " - " + mListS.get(i).getName() + " - " + townName);
+        station.setText(mListT.get(i));
 
         Drawable d = mContext.getResources().getDrawable( R.drawable.maps_and_flags );
         img.setImageDrawable( d );
-
-        //(4) Changement de la couleur du fond de notre item
-        //if (mListP.get(position).genre == Personne.MASCULIN) {
-        //    layoutItem.setBackgroundColor(Color.BLUE);
-        //} else {
-        //    layoutItem.setBackgroundColor(Color.MAGENTA);
-        //}
 
         //On retourne l'item créé.
         return layoutItem;

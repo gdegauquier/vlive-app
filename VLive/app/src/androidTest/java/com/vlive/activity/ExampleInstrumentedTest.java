@@ -1,4 +1,4 @@
-package com.vlive.app;
+package com.vlive.activity;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
