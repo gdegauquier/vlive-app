@@ -1,6 +1,8 @@
 package com.vlive.asynctask;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
@@ -31,11 +33,13 @@ import java.util.Locale;
  * Created by GDEGAUQUIER on 27/12/2016.
  */
 
-public class StationAsyncTask extends AsyncTask<Void, Void, Void>{ //extends AsyncTask<Void, Void, Void> {
+public class StationAsyncTask extends AsyncTask<Void, Integer, Void>{ //extends AsyncTask<Void, Void, Void> {
 
+    private Dialog pdia;
     Activity mActivity;
     List<Station> listS = new ArrayList<>();
     List<String> listTowns = new ArrayList<>();
+
     public StationAsyncTask(Activity activity) {
         mActivity = activity;
     }
@@ -43,6 +47,17 @@ public class StationAsyncTask extends AsyncTask<Void, Void, Void>{ //extends Asy
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
+        pdia = new ProgressDialog(mActivity);
+        pdia.setTitle( "Loading...");
+        pdia.show();
+    }
+
+
+    protected void onProgressUpdate(Integer...progress) {
+
+        pdia.setTitle("Loading... "+progress[0]+" %" );
+
     }
 
 
@@ -60,7 +75,9 @@ public class StationAsyncTask extends AsyncTask<Void, Void, Void>{ //extends Asy
         }
 
         //remplir la liste
+        publishProgress(0);
         setStationsIntoList( document );
+
 
         //remplir liste dans la DB
         if ( listS != null ){
@@ -68,7 +85,10 @@ public class StationAsyncTask extends AsyncTask<Void, Void, Void>{ //extends Asy
             StationDB stationDB = new StationDB(mActivity.getApplicationContext());
             stationDB.open();
 
+            int ind = 0;
             for ( Station station : listS ){
+                ind++;
+
                 if( station.getTown() == null){
                     Log.d("StationAsyncTask","station "+station.getName() +" - no town found.");
                     continue;
@@ -77,14 +97,9 @@ public class StationAsyncTask extends AsyncTask<Void, Void, Void>{ //extends Asy
             }
 
             Log.d("countDB",stationDB.getCount() +" records into BDD");
-
-
             listTowns = stationDB.getDistinctTown();
 
             stationDB.close();
-
-
-
 
         }
 
@@ -95,19 +110,22 @@ public class StationAsyncTask extends AsyncTask<Void, Void, Void>{ //extends Asy
     @Override
     protected void onPostExecute(Void result) {
 
+        pdia.hide();
+
         ListView list = (ListView) mActivity.findViewById( R.id.listTown );
         TownAdapter townAdapter = new TownAdapter( mActivity.getApplicationContext(), listTowns);
         list.setAdapter( townAdapter );
-
     }
 
 
     private void setStationsIntoList( Document document ){
 
         int ind = 0;
+        int total = document.getElementsByAttribute("id").size();
 
         for ( Element el : document.getElementsByAttribute("id") ){
             ind ++;
+            publishProgress((int) ((ind / (float) total) * 100));
             String id = el.attr("id");
             String name = el.attr("name");
             String longitude  = el.attr("lng");
@@ -126,10 +144,6 @@ public class StationAsyncTask extends AsyncTask<Void, Void, Void>{ //extends Asy
             setTownForStation( station );
 
             listS.add( station );
-
-            //if ( ind == 10){
-            //    break;
-            //}
 
         }
 
