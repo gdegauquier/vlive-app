@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.vlive.asynctask.TownAsyncTask;
 
 
-public class ActivityMain extends Activity {
+public class ActivityStation extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

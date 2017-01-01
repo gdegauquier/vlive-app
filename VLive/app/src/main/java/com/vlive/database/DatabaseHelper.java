@@ -38,14 +38,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // on crée la table table_contacts dans la BDD
         db.execSQL(
-                "CREATE TABLE STATION ( ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                "CREATE TABLE IF NOT EXISTS STATION ( ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "                     NAME TEXT NOT NULL,  TOWN NOT NULL);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // on supprime la table table_contacts de la BDD et on recrée la BDD
-        db.execSQL("DROP TABLE STATION ;");
-        onCreate(db);
+        //db.execSQL("DROP TABLE STATION ;");
+        //onCreate(db);
     }
 }

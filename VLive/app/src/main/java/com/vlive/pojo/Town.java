@@ -8,7 +8,9 @@ import java.util.ArrayList;
 
 public class Town {
 
+    private int id;
     private String name;
+    private int countStations;
 
     public String getName() {
         return name;
@@ -18,6 +20,21 @@ public class Town {
         this.name = name;
     }
 
+    public int getCountStations() {
+        return countStations;
+    }
+
+    public void setCountStations(int countStations) {
+        this.countStations = countStations;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     /**
      * Initialise une liste de personnes

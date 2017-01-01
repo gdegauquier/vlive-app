@@ -1,38 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
-    >
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_fond">
 
     <ImageView
-        android:id="@+id/avatar"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        tools:background="#AAA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/maps_and_flags"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:id="@+id/imgLocation"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
         />
 
     <TextView
-        android:id="@+id/pseudo"
+        android:text="10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/avatar"
-        android:layout_alignTop="@+id/avatar"
-        android:textStyle="bold"
-        tools:text="Pseudo"
-        />
+        android:id="@+id/countBikes"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:textSize="10sp"
+        android:textColor="@android:color/background_dark" />
+
+    <ImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:srcCompat="@drawable/man_on_motorbike"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:id="@+id/imgBike"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/countBikes"
+        android:layout_toStartOf="@+id/countBikes" />
 
     <TextView
-        android:id="@+id/text"
+        android:text="Lille"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:layout_alignLeft="@+id/pseudo"
-        android:layout_below="@+id/pseudo"
-        tools:text="Texte de mon tweet"
-        />
+        android:id="@+id/townName"
+        android:textSize="20sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+
+        android:layout_alignTop="@+id/imgLocation"
+        android:layout_toRightOf="@+id/imgLocation"
+        android:layout_toEndOf="@+id/imgLocation"
+        android:textColor="@android:color/background_dark" />
 
 </RelativeLayout>

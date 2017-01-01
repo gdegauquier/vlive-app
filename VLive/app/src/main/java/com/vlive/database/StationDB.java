@@ -67,6 +67,11 @@ public class StationDB {
         return count;
     }
 
+    public Cursor getCountByTown() {
+        Cursor curCount= db.rawQuery("SELECT count(*), town FROM STATION group by town order by town asc", null );
+        return curCount;
+    }
+
     public List<String> getDistinctTown(){
 
         List<String> towns = new ArrayList<>();

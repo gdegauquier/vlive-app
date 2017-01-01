@@ -9,9 +9,7 @@ public class Station {
     String name;
     String latitude;
     String longitude;
-    String id;
-
-
+    int id;
 
     Town town;
 
@@ -48,12 +46,11 @@ public class Station {
         this.town = town;
     }
 
-
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 }
