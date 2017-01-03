@@ -87,7 +87,7 @@ public class TownAsyncTask extends AsyncTask<Void, Integer, Void>{ //extends Asy
             // Connect to the web site
             //document = Jsoup.connect("http://www.vlille.fr/stations/xml-stations.aspx").get();
 
-            document = Jsoup.connect("http://192.168.0.15/vlive-api/index.php/api/v1/towns").get();
+            document = Jsoup.connect("http://172.22.12.50/vlive-api/index.php/api/v1/towns").get();
 
             Object obj = parser.parse(document.body().text());
             JSONArray array = (JSONArray)obj;
@@ -109,28 +109,6 @@ public class TownAsyncTask extends AsyncTask<Void, Integer, Void>{ //extends Asy
 
         //remplir la liste
         publishProgress(0);
-       // setStationsIntoList( document );
-
-        //remplir liste dans la DB
-//        if ( listS != null ){
-//
-//            int ind = 0;
-//            for ( Station station : listS ){
-//                ind++;
-//
-//                if( station.getTown() == null){
-//                    Log.d("TownAsyncTask","station "+station.getName() +" - no town found.");
-//                    continue;
-//                }
-//                stationDB.insert( station );
-//            }
-//
-//            Log.d("countDB",stationDB.getCount() +" records into BDD");
-//            listTowns = stationDB.getCountByTown();
-//
-//            stationDB.close();
-//
-//        }
 
         return null;
     }
@@ -146,60 +124,5 @@ public class TownAsyncTask extends AsyncTask<Void, Integer, Void>{ //extends Asy
     }
 
 
-//    private void setStationsIntoList( Document document ){
-//
-//        int ind = 0;
-//        int total = document.getElementsByAttribute("id").size();
-//
-//        for ( Element el : document.getElementsByAttribute("id") ){
-//            ind ++;
-//            publishProgress((int) ((ind / (float) total) * 100));
-//            String id = el.attr("id");
-//            String name = el.attr("name");
-//            String longitude  = el.attr("lng");
-//            String latitude  = el.attr("lat");
-//
-//            if ( null == id || null == name){
-//                continue;
-//            }
-//            Log.d("TownAsyncTask", "ID Station = "+ id );
-//            Station station = new Station();
-//            station.setId( id );
-//            station.setName( name );
-//            station.setLongitude( longitude );
-//            station.setLatitude( latitude );
-//
-//            setTownForStation( station );
-//
-//            listS.add( station );
-//
-//        }
-//
-//    }
-
-
-//    private void setTownForStation( Station station ){
-//
-//        if (   null == station.getLatitude() || null ==  station.getLongitude()  ){
-//            Log.w( "TownAsyncTask","Check Latitude / Longitude : Town not found for the station id ="+station.getId() + ", name = "+station.getName() );
-//            return ;
-//        }
-//
-//        String doc = null ;
-//
-//        Geocoder geo = new Geocoder( mActivity.getApplicationContext(), Locale.FRANCE );
-//
-//        try {
-//            List<Address> adressFromLatLng =  geo.getFromLocation(Double.valueOf(station.getLatitude()), Double.valueOf(station.getLongitude()), 1 );
-//
-//            Town town = new Town();
-//            town.setName(   adressFromLatLng.get(0).getLocality().toString() );
-//            station.setTown( town );
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
 
 }

@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.vlive.activity.R;
+import com.vlive.pojo.Station;
 import com.vlive.pojo.Town;
 
 import java.util.List;
@@ -19,10 +20,10 @@ import java.util.List;
  * Created by Georges on 26/12/2016.
  */
 
-public class TownAdapter extends BaseAdapter{
+public class StationAdapter extends BaseAdapter{
 
     // Une liste de villes
-    private List<Town> mListT;
+    private List<Station> mListS;
 
     //Le contexte dans lequel est présent notre adapter
     private Context mContext;
@@ -30,20 +31,20 @@ public class TownAdapter extends BaseAdapter{
     //Un mécanisme pour gérer l'affichage graphique depuis un layout XML
     private LayoutInflater mInflater;
 
-    public TownAdapter(Context context, List<Town> listT) {
+    public StationAdapter(Context context, List<Station> listS) {
         mContext = context;
-        mListT = listT;
+        mListS = listS;
         mInflater = LayoutInflater.from(mContext);
     }
 
     @Override
     public int getCount() {
-        return mListT.size();
+        return mListS.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return mListT.get(i);
+        return mListS.get(i);
     }
 
     @Override
@@ -57,33 +58,21 @@ public class TownAdapter extends BaseAdapter{
         //(1) : Réutilisation des layouts
         if (view == null) {
             //Initialisation de notre item à partir du  layout XML - ROW
-            relativeLayout = (RelativeLayout) mInflater.inflate(R.layout.row_town, viewGroup, false);
+            relativeLayout = (RelativeLayout) mInflater.inflate(R.layout.row_station, viewGroup, false);
         } else {
             relativeLayout = (RelativeLayout) view;
         }
 
         //(2) : Récupération des TextView de notre layout
-        TextView station = (TextView)relativeLayout.findViewById(R.id.townName);
-        TextView count = (TextView)relativeLayout.findViewById(R.id.countBikes);
-        TextView idTown = (TextView)relativeLayout.findViewById(R.id.town_id);
+        TextView station = (TextView)relativeLayout.findViewById(R.id.stationName);
 
-
-        ImageView imgPosition = (ImageView) relativeLayout.findViewById(R.id.imgLocation );
-        ImageView imgBike = (ImageView) relativeLayout.findViewById(R.id.imgBike );
-
-        Drawable dPosition = mContext.getResources().getDrawable( R.drawable.maps_and_flags );
-        Drawable dbike = mContext.getResources().getDrawable( R.drawable.man_on_motorbike);
+        ImageView imgVlille = (ImageView) relativeLayout.findViewById(R.id.imgVlille );
+        Drawable dVlille = mContext.getResources().getDrawable( R.drawable.logo_vlive );
 
 
         //(3) : Renseignement des valeurs
-
-
-
-        station.setText(mListT.get(i).getName());
-        count.setText( mListT.get(i).getCountStations() +"" );
-        idTown.setText( mListT.get(i).getId()+"" );
-        imgPosition.setImageDrawable( dPosition );
-        imgBike.setImageDrawable( dbike );
+        station.setText(mListS.get(i).getName());
+        imgVlille.setImageDrawable( dVlille );
         //On retourne l'item créé.
 
         return relativeLayout;
