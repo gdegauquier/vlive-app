@@ -87,7 +87,7 @@ public class TownAsyncTask extends AsyncTask<Void, Integer, Void>{ //extends Asy
             // Connect to the web site
             //document = Jsoup.connect("http://www.vlille.fr/stations/xml-stations.aspx").get();
 
-            document = Jsoup.connect("http://172.22.12.50/vlive-api/index.php/api/v1/towns").get();
+            document = Jsoup.connect("http://dugauguez.free.fr/index.php/api/v1/towns").get();
 
             Object obj = parser.parse(document.body().text());
             JSONArray array = (JSONArray)obj;

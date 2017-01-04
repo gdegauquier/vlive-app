@@ -68,7 +68,7 @@ public class StationAsyncTask extends AsyncTask<Integer, Integer, Void>{ //exten
 
         try {
             // Connect to the web site
-            document = Jsoup.connect("http://172.22.12.50/vlive-api/index.php/api/v1/towns/"+townId+"/stations").get();
+            document = Jsoup.connect("http://dugauguez.free.fr/index.php/api/v1/towns/"+townId+"/stations").get();
 
             Object obj = parser.parse(document.body().text());
             JSONArray array = (JSONArray)obj;
