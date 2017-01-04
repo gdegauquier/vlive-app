@@ -72,7 +72,7 @@ public class TownAdapter extends BaseAdapter{
         ImageView imgBike = (ImageView) relativeLayout.findViewById(R.id.imgBike );
 
         Drawable dPosition = mContext.getResources().getDrawable( R.drawable.maps_and_flags );
-        Drawable dbike = mContext.getResources().getDrawable( R.drawable.man_on_motorbike);
+        Drawable dbike = mContext.getResources().getDrawable( R.drawable.logo_vlive);
 
 
         //(3) : Renseignement des valeurs

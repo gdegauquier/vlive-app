@@ -65,14 +65,22 @@ public class StationAdapter extends BaseAdapter{
 
         //(2) : Récupération des TextView de notre layout
         TextView station = (TextView)relativeLayout.findViewById(R.id.stationName);
+        TextView stationAddress = (TextView) relativeLayout.findViewById(R.id.stationAddress);
+
 
         ImageView imgVlille = (ImageView) relativeLayout.findViewById(R.id.imgVlille );
         Drawable dVlille = mContext.getResources().getDrawable( R.drawable.logo_vlive );
 
+        ImageView imgBike = (ImageView) relativeLayout.findViewById(R.id.imgBike);
+        Drawable  dBike   = mContext.getResources().getDrawable(R.drawable.bicycle);
 
         //(3) : Renseignement des valeurs
         station.setText(mListS.get(i).getName());
+        stationAddress.setText( mListS.get(i).getAddress() );
         imgVlille.setImageDrawable( dVlille );
+        imgBike.setImageDrawable(dBike);
+
+
         //On retourne l'item créé.
 
         return relativeLayout;

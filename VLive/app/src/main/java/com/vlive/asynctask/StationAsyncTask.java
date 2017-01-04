@@ -80,6 +80,7 @@ public class StationAsyncTask extends AsyncTask<Integer, Integer, Void>{ //exten
 
                 s.setId( Integer.valueOf(objStation.get("id").toString()) );
                 s.setName( objStation.get("name").toString() );
+                s.setAddress( objStation.get("address").toString() );
 
                 Town t = new Town();
                 t.setId( Integer.valueOf(objStation.get("town_id").toString()) );
